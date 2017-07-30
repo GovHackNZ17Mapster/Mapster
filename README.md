@@ -7,7 +7,44 @@
 <p>The potential of the idea is immense and can be expanded to various regions and even the world, the application is designed and compatible to include other data set and can cater to any region if the required data is available
 The biggest advantage of the program is that it does not require a lot of information which makes it easier for any authority within any region to collect the data required to generate the results using the Mapster maps. </p>
 
-### Sources used
+## Installation Instructions
+### Requirements
+- MySQL database (v5.7.19 or newer)
+- Webserver running PHP (v5.6 or newer)
+- QGIS (v2.18 or newer)
+- Text Editor
+
+### Steps
+- Download the sources
+- Uploading the meshblock data to the database (using the ogr2ogr tool shipped with QGIS)
+```
+ogr2ogr -f \"MySQL\" MYSQL:\"DATABASE,host=HOSTNAME,user=USERNAME,password=PASSWORD,port=3306\" -nln \"mesh\" -s_srs \"EPSG:2193\" -t_srs \"EPSG:4326\" SHAPEFILE.shp -update -overwrite -lco GEOMETRY_NAME=SHAPE -lco ENGINE=MyISAM
+```
+
+- If you want to load our dataset, insert the sqldump to your database
+```
+mysql -h HOSTNAME -u USERNAME -p DATABASE < govhack.sql
+```
+
+- Crate a settings file to store the login credentials for the database called 'settings.ini' with the following content
+
+```
+[settings]
+server = SERVERNAME
+user = USERNAME
+pass = PASSWORD
+db = DATABASE
+```
+
+
+- To add additional aspects on meshblock level create new columns in the table
+```
+ALTER TABLE mesh ADD COLUMN name datatype
+```
+
+
+
+## Sources used
 http://www3.stats.govt.nz/meshblock/2013/excel/2013_mb_dataset_Hawke's_Bay_Region.zip
 http://policedata.nz/SASVisualAnalyticsViewer/VisualAnalyticsViewer_guest.jsp?reportName=Victim%20Time%20and%20Place&reportPath=/Live/Reports/&viewerMode=Classic&reportViewOnly=true
 http://www3.stats.govt.nz/digitalboundaries/annual/ESRI_Shapefile_2017_Digital_Boundaries_High_Def_Clipped.zip
