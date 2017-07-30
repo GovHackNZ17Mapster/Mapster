@@ -1,10 +1,12 @@
+<?php
+    header("Access-Control-Allow-Origin: *");
+?>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <head>
-Access-Control-Allow-Origin: *
 <style>
       #map1 {
         height: 100%;
@@ -40,7 +42,7 @@ font-weight:bold;
 </nav>
 </div>
 	<table>
-    <div id="map1">test</div>
+    <div id="map1"></div>
     <div id="map2"></div>
     <script>
       var map1, map2;
@@ -53,8 +55,8 @@ font-weight:bold;
         map2 = new google.maps.Map(document.getElementById('map2'), options);
 
         // Load GeoJSON.
-        map1.data.loadGeoJson('https://sebastian-pfaller.name/GovHackNZ/dbconn.php?coloring=rent');
-        map2.data.loadGeoJson('https://sebastian-pfaller.name/GovHackNZ/dbconn.php?coloring=crimes');
+        map1.data.loadGeoJson('https://sebastian-pfaller.name/GovHackNZ17/dbconn.php?coloring=rent');
+        map2.data.loadGeoJson('https://sebastian-pfaller.name/GovHackNZ17/dbconn.php?coloring=crimes');
 
         // Set styling
         map1.data.setStyle(function(feature) {

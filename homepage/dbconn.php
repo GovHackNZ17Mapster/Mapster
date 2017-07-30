@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 $settings = parse_ini_file("settings.ini");
 
 $servername = $settings["server"];
