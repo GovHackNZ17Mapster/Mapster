@@ -43,7 +43,7 @@ ALTER TABLE mesh ADD COLUMN name datatype
 
 ## Links
 - [GitHub](https://github.com/GovHackNZ17Mapster/Mapster)
-- [YouTube](<InsertLink>)
+- [YouTube](https://youtu.be/-Ypsvb21PJw)
 - [Homepage](http://mapster.tech)
 
 ## Sources used
